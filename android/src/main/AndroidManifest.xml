@@ -1,0 +1,12 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Göz koruma filtresi: yalnızca kullanıcı filtreyi açıp sistem
+         ekranından izin verirse diğer uygulamaların üstüne yarı saydam,
+         dokunmaları geçiren bir renk katmanı çizilir. -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+    <application>
+        <service
+            android:name="com.gamestudio100.arac_motoru.ScreenFilterService"
+            android:exported="false" />
+    </application>
+</manifest>

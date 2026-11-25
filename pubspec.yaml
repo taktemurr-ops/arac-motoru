@@ -1,5 +1,5 @@
 name: arac_motoru
-description: "Araç Kutusu motoru: 60 çevrimdışı araç (hesap, çevirici, sensör, kamera, ses, zaman)."
+description: "Araç Kutusu motoru: 64 çevrimdışı araç (hesap, çevirici, sensör, kamera, ses, zaman, ağ, NFC)."
 publish_to: none
 version: 1.0.0
 
@@ -23,6 +23,8 @@ dependencies:
   geolocator: ">=13.0.0 <15.0.0"
   http: ^1.2.2
   mobile_scanner: ">=6.0.0 <8.0.0"
+  network_info_plus: ">=6.0.0 <8.0.0"
+  nfc_manager: ^4.1.0
   path_provider: ^2.1.4
   qr_flutter: ^4.1.0
   record: ">=5.2.0 <7.0.0"
@@ -35,3 +37,10 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
+
+flutter:
+  plugin:
+    platforms:
+      android:
+        package: com.gamestudio100.arac_motoru
+        pluginClass: AracMotoruPlugin

@@ -1,4 +1,4 @@
-/// Üretilmiş dosya (proto/apps/arac/mkengine.py). Araç Kutusu'nun 60 aracı.
+/// Üretilmiş dosya (proto/apps/arac/mkengine.py). Araç Kutusu'nun 64 aracı.
 library;
 
 import 'package:flutter/material.dart';
@@ -9,11 +9,15 @@ import 'tools/calc.dart';
 import 'tools/camera.dart';
 import 'tools/convert.dart';
 import 'tools/device.dart';
+import 'tools/filter.dart';
 import 'tools/money.dart';
+import 'tools/network.dart';
+import 'tools/nfc.dart';
 import 'tools/random.dart';
 import 'tools/sensor.dart';
 import 'tools/text.dart';
 import 'tools/time.dart';
+import 'tools/tone.dart';
 import 'tx.dart';
 
 /// Kategoriler (merkezdeki çip sırası).
@@ -634,6 +638,46 @@ final List<AppTool> aracTools = [
     category: 'camera',
     keywords: const [],
     builder: (context, t) => SosTool(t),
+  ),
+  AppTool(
+    id: 'uyg-ton-ureteci',
+    title: kAracTitle['uyg-ton-ureteci']!,
+    tagline: kAracTag['uyg-ton-ureteci']!,
+    icon: Icons.waves_rounded,
+    color: const Color(0xFF4DD0E1),
+    category: 'audio',
+    keywords: const ['hz', 'sine', 'tone'],
+    builder: (context, t) => ToneGenTool(t),
+  ),
+  AppTool(
+    id: 'uyg-nfc-okuyucu',
+    title: kAracTitle['uyg-nfc-okuyucu']!,
+    tagline: kAracTag['uyg-nfc-okuyucu']!,
+    icon: Icons.nfc_rounded,
+    color: const Color(0xFF7E57C2),
+    category: 'device',
+    keywords: const ['nfc', 'rfid', 'ndef'],
+    builder: (context, t) => NfcTool(t),
+  ),
+  AppTool(
+    id: 'uyg-ag-bilgisi',
+    title: kAracTitle['uyg-ag-bilgisi']!,
+    tagline: kAracTag['uyg-ag-bilgisi']!,
+    icon: Icons.lan_rounded,
+    color: const Color(0xFF42A5F5),
+    category: 'device',
+    keywords: const ['wifi', 'ip', 'subnet', 'cidr', 'dns'],
+    builder: (context, t) => NetworkTool(t),
+  ),
+  AppTool(
+    id: 'uyg-goz-koruma-filtresi',
+    title: kAracTitle['uyg-goz-koruma-filtresi']!,
+    tagline: kAracTag['uyg-goz-koruma-filtresi']!,
+    icon: Icons.nightlight_round,
+    color: const Color(0xFFFFA726),
+    category: 'device',
+    keywords: const ['night', 'blue light', 'filter'],
+    builder: (context, t) => EyeFilterTool(t),
   ),
 ];
 
