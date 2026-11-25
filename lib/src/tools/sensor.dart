@@ -54,7 +54,7 @@ class _CompassToolState extends State<CompassTool> {
     hy /= normH;
     hz /= normH;
     final normA = math.sqrt(ax * ax + ay * ay + az * az);
-    final nx = ax / normA, ny = ay / normA, nz = az / normA;
+    final nx = ax / normA, nz = az / normA;
     final my = nz * hx - nx * hz;
     var h = _deg(math.atan2(hy, my));
     if (h < 0) h += 360;
