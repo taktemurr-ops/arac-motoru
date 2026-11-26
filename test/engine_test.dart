@@ -9,9 +9,9 @@ import 'package:studio_core/app/services/purchases.dart';
 import 'package:studio_core/core/save_store.dart';
 
 void main() {
-  test('64 araç, 33 dilde ad ve açıklama, benzersiz kimlik', () {
-    expect(aracTools.length, 64);
-    expect(aracTools.map((t) => t.id).toSet().length, 64);
+  test('68 araç, 33 dilde ad ve açıklama, benzersiz kimlik', () {
+    expect(aracTools.length, 68);
+    expect(aracTools.map((t) => t.id).toSet().length, 68);
     for (final t in aracTools) {
       expect(t.title.length, 33, reason: t.id);
       expect(t.tagline.length, 33, reason: t.id);

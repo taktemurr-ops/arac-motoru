@@ -1,20 +1,24 @@
-/// Üretilmiş dosya (proto/apps/arac/mkengine.py). Araç Kutusu'nun 64 aracı.
+/// Üretilmiş dosya (proto/apps/arac/mkengine.py). Araç Kutusu'nun 68 aracı.
 library;
 
 import 'package:flutter/material.dart';
 import 'package:studio_core/apps/apps.dart';
 
+import 'tools/archive.dart';
 import 'tools/audio.dart';
+import 'tools/bt_finder.dart';
 import 'tools/calc.dart';
 import 'tools/camera.dart';
 import 'tools/convert.dart';
 import 'tools/device.dart';
 import 'tools/filter.dart';
+import 'tools/ir.dart';
 import 'tools/money.dart';
 import 'tools/network.dart';
 import 'tools/nfc.dart';
 import 'tools/random.dart';
 import 'tools/sensor.dart';
+import 'tools/sound_finder.dart';
 import 'tools/text.dart';
 import 'tools/time.dart';
 import 'tools/tone.dart';
@@ -678,6 +682,46 @@ final List<AppTool> aracTools = [
     category: 'device',
     keywords: const ['night', 'blue light', 'filter'],
     builder: (context, t) => EyeFilterTool(t),
+  ),
+  AppTool(
+    id: 'uyg-alkisla-telefonu-bul',
+    title: kAracTitle['uyg-alkisla-telefonu-bul']!,
+    tagline: kAracTag['uyg-alkisla-telefonu-bul']!,
+    icon: Icons.hearing_rounded,
+    color: const Color(0xFFFFB300),
+    category: 'audio',
+    keywords: const ['clap', 'whistle', 'find phone'],
+    builder: (context, t) => SoundFinderTool(t),
+  ),
+  AppTool(
+    id: 'uyg-kizilotesi-kumanda',
+    title: kAracTitle['uyg-kizilotesi-kumanda']!,
+    tagline: kAracTag['uyg-kizilotesi-kumanda']!,
+    icon: Icons.settings_remote_rounded,
+    color: const Color(0xFFEF5350),
+    category: 'device',
+    keywords: const ['ir', 'remote', 'tv'],
+    builder: (context, t) => IrRemoteTool(t),
+  ),
+  AppTool(
+    id: 'uyg-bluetooth-bulucu',
+    title: kAracTitle['uyg-bluetooth-bulucu']!,
+    tagline: kAracTag['uyg-bluetooth-bulucu']!,
+    icon: Icons.bluetooth_searching_rounded,
+    color: const Color(0xFF448AFF),
+    category: 'device',
+    keywords: const ['bluetooth', 'ble', 'earbuds', 'finder'],
+    builder: (context, t) => BtFinderTool(t),
+  ),
+  AppTool(
+    id: 'uyg-arsiv-acici',
+    title: kAracTitle['uyg-arsiv-acici']!,
+    tagline: kAracTag['uyg-arsiv-acici']!,
+    icon: Icons.folder_zip_rounded,
+    color: const Color(0xFFA1887F),
+    category: 'device',
+    keywords: const ['zip', 'tar', 'gz', 'unzip', 'rar', '7z'],
+    builder: (context, t) => ArchiveTool(t),
   ),
 ];
 

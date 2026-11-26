@@ -1,12 +1,36 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
     <!-- Göz koruma filtresi: yalnızca kullanıcı filtreyi açıp sistem
          ekranından izin verirse diğer uygulamaların üstüne yarı saydam,
          dokunmaları geçiren bir renk katmanı çizilir. -->
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
+    <!-- Kızılötesi kumanda: yalnızca IR vericisi olan telefonlarda. -->
+    <uses-permission android:name="android.permission.TRANSMIT_IR" />
+    <uses-feature android:name="android.hardware.consumerir" android:required="false" />
+
+    <!-- Alkışla/ıslıkla bul: kullanıcı başlatınca mikrofonu cihazda dinleyen
+         bildirimli ön plan hizmeti (ses kaydedilmez, gönderilmez). -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MICROPHONE" />
+
+    <!-- Bluetooth cihaz bulucu: yalnızca yakındaki cihazların adı ve sinyal
+         gücü okunur; konum türetilmez (neverForLocation). -->
+    <uses-permission android:name="android.permission.BLUETOOTH" android:maxSdkVersion="30" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" android:maxSdkVersion="30" />
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN"
+        android:usesPermissionFlags="neverForLocation" tools:targetApi="s" />
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+    <uses-feature android:name="android.hardware.bluetooth" android:required="false" />
+    <uses-feature android:name="android.hardware.bluetooth_le" android:required="false" />
+
     <application>
         <service
             android:name="com.gamestudio100.arac_motoru.ScreenFilterService"
             android:exported="false" />
+        <service
+            android:name="com.gamestudio100.arac_motoru.FinderService"
+            android:exported="false"
+            android:foregroundServiceType="microphone" />
     </application>
 </manifest>

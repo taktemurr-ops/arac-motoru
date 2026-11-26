@@ -58,4 +58,18 @@ class AppFiles {
       if (await f.exists()) await f.delete();
     } catch (_) {}
   }
+
+  /// [dir] altına [relPath] yolunda dosya yazar (ara klasörler oluşturulur).
+  /// Yol önceden güvenli hâle getirilmiş olmalıdır (".." yok).
+  static Future<bool> writeUnder(String dir, String relPath, List<int> data) async {
+    try {
+      if (relPath.split('/').contains('..')) return false;
+      final f = File('$dir${Platform.pathSeparator}${relPath.replaceAll('/', Platform.pathSeparator)}');
+      await f.parent.create(recursive: true);
+      await f.writeAsBytes(data, flush: true);
+      return true;
+    } catch (_) {
+      return false;
+    }
+  }
 }
