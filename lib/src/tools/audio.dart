@@ -451,7 +451,7 @@ class _MetronomeToolState extends State<MetronomeTool> {
     final s = AppLook.of(context);
     return ToolList(children: [
       BigReadout('$_bpm', unit: 'BPM'),
-      Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+      Wrap(alignment: WrapAlignment.center, children: [
         for (var i = 0; i < _beats; i++)
           AnimatedContainer(
             duration: const Duration(milliseconds: 80),
@@ -465,12 +465,10 @@ class _MetronomeToolState extends State<MetronomeTool> {
           ),
       ]),
       Slider(min: 30, max: 260, value: _bpm.toDouble(), onChanged: (v) => _setBpm(v.round())),
-      Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+      // Dar ekranda ve büyük yazıda alt satıra geçer.
+      Wrap(alignment: WrapAlignment.center, spacing: 8, runSpacing: 8, children: [
         for (final d in [-5, -1, 1, 5])
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 4),
-            child: OutlinedButton(onPressed: () => _setBpm(_bpm + d), child: Text(d > 0 ? '+$d' : '$d')),
-          ),
+          OutlinedButton(onPressed: () => _setBpm(_bpm + d), child: Text(d > 0 ? '+$d' : '$d')),
       ]),
       Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),

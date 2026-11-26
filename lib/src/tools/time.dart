@@ -295,12 +295,10 @@ class _TimerToolState extends State<TimerTool> {
       if (!_running)
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-          child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+          // Dar ekranda ve büyük yazıda alt satıra geçer.
+          child: Wrap(alignment: WrapAlignment.center, spacing: 8, runSpacing: 8, children: [
             for (final (label, ms) in [('−1m', -60000), ('−10s', -10000), ('+10s', 10000), ('+1m', 60000)])
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 4),
-                child: OutlinedButton(onPressed: () => _setTotal(_total + ms), child: Text(label)),
-              ),
+              OutlinedButton(onPressed: () => _setTotal(_total + ms), child: Text(label)),
           ]),
         ),
       Padding(
@@ -811,9 +809,8 @@ class _NightClockToolState extends State<NightClockTool> {
         color: Colors.black,
         child: Column(children: [
           Slider(value: _dim, onChanged: (v) => setState(() => _dim = v)),
-          Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+          Wrap(alignment: WrapAlignment.center, spacing: 8, runSpacing: 8, children: [
             FilterChip(label: Text(L(t, 'night_red')), selected: _red, onSelected: (v) => setState(() => _red = v)),
-            const SizedBox(width: 8),
             FilterChip(
               label: Text(L(t, 'keep_awake')),
               selected: _awake,
