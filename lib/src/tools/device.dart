@@ -11,6 +11,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:studio_core/app/studio_ui.dart';
 import 'package:studio_core/apps/apps.dart';
 
 import '../common.dart';
@@ -113,6 +114,7 @@ class _FilesToolState extends State<FilesTool> {
                 final ok = await showDialog<bool>(
                   context: context,
                   builder: (c) => AlertDialog(
+                    icon: const Icon(Icons.delete_forever_rounded, color: StudioLook.bad, size: 40),
                     title: Text(L(t, 'delete')),
                     content: Text(f.name),
                     actions: [
